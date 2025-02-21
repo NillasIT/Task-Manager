@@ -30,9 +30,9 @@ class TaskController extends Controller
         return redirect() -> route('task.index') -> with('success','Task added successful!');
     }
 
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        return view('task.show', ['task' => $task]);
     }
 
     public function edit(string $id)

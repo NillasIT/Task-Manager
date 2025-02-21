@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Task extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
     protected $fillable = [
         'title',
         'description',
