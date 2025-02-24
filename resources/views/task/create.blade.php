@@ -20,6 +20,15 @@
                       class="form-control border-0 text-white" 
                       style="background-color: #232323;" rows="10"></textarea>
         </div>
+        <div class="mb-3">
+            <label for="category" class="form-label text-white">Categoria</label>
+            <select name="category_id" id="category" class="form-control border-0 text-white" style="background-color: #232323;">
+                <option value="">Selecione uma Categoria</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="text-center">
             <button type="submit" class="btn text-white" style="background-color: #6c63ff;">Salvar Nota</button>
         </div>

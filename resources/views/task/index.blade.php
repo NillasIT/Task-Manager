@@ -7,10 +7,25 @@
     <h6 class="text-uppercase text-primary">Salve suas ideias com notas online</h6>
     <h1 class="fw-bold">guardanotas ✍️</h1>
 
-    <!-- Botão de Adicionar -->
-    <div class="d-flex justify-content-end my-4">
-        <a href="{{ route('task.create') }}" class="text-primary fs-2 text-decoration-none">+</a>
+    <!-- Botão de Adicionar Nota -->
+    <div class="mb-4 text-end">
+        <a href="{{ route('task.create') }}" class="btn text-white" style="background-color: #6c63ff;">+ Adicionar Nota</a>
     </div>
+
+    <!-- Filtro de Categoria -->
+    <form action="{{ route('task.index') }}" method="GET" class="mb-4">
+        <div class="mb-3">
+            <select name="category_id" class="form-control text-white" style="background-color: #232323;">
+                <option value="">Filtrar por Categoria</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn text-white" style="background-color: #6c63ff;">Filtrar</button>
+    </form>
 
     <!-- Cards das Notas -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -35,21 +50,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Modal de Visualização -->
-            <div class="modal fade" id="viewNote{{ $task->id }}" tabindex="-1" aria-labelledby="viewNoteLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" style="max-width: 50vw;">
-                    <div class="modal-content bg-dark text-white">
-                        <div class="modal-header border-0">
-                            <h5 class="modal-title">{{ $task->title }}</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>{{ $task->description }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         @endforeach
     </div>
 
@@ -66,10 +66,5 @@
         </nav>
     </div>
 
-    <!-- Rodapé -->
-    <footer class="mt-5 text-muted small">
-        Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit.
-        <strong>Curabitur</strong> ac quam vel odio auctor molestie. Vestibulum at urna id lacus viverra accumsan.
-    </footer>
 </div>
 @endsection
