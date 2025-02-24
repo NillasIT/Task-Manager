@@ -5,7 +5,7 @@
 @section('content')
 <div class="container text-center">
     <h6 class="text-uppercase text-primary">Salve suas ideias com notas online</h6>
-    <h1 class="fw-bold">guardanotas ✍️</h1>
+    <h1 class="fw-bold">Guardanotas ✍️</h1>
 
     <!-- Botão de Adicionar Nota -->
     <div class="mb-4 text-end">
