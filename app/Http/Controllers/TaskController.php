@@ -11,6 +11,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::orderBy('id') -> get();
+        $tasks = Task::paginate(9);
         return view('task.index', ['tasks' => $tasks]);
     }
 
@@ -35,18 +36,29 @@ class TaskController extends Controller
         return view('task.show', ['task' => $task]);
     }
 
-    public function edit(string $id)
+    public function edit(Task $task)
     {
-        //
+        return view('task.edit', ['task'=> $task]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(TaskRequest $request, Task $task)
     {
-        //
+        $request -> validate([
+            'title'=> 'required|max:255',
+            'description'=> 'required',
+        ]);
+
+        $task->update([
+            'title'=> $request -> title,
+            'description'=> $request -> description,
+        ]);
+
+        return redirect() -> route('task.index', ['task' => $task]) -> with('success','Note added successful!');
     }
 
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect() -> route('task.index') -> with('success','Note deleted successful!');
     }
 }

@@ -11,48 +11,117 @@
             color: white;
             text-align: center;
         }
-        .custom-input {
-            background-color: #2b2b2b;
-            border: 1px solid #3a3a3a;
-            color: white;
-        }
-        .custom-input::placeholder {
-            color: #777;
-        }
-        .custom-btn {
-            background-color: #6c63ff;
-            color: white;
+
+        /* Botão Adicionar */
+        .btn-add {
+            color: #6c63ff;
+            font-size: 24px;
             border: none;
+            background: none;
         }
-        .custom-btn:hover {
-            background-color: #5a52e0;
+        .btn-add:hover {
+            color: #5a52e0;
         }
+
+        /* Cards */
         .note-card {
             background-color: #232323 !important;
             border: none;
             color: white;
             padding: 15px;
             border-radius: 10px;
+            width: 360px;
+            min-height: 240px; /* Definindo altura mínima */
+            display: flex;
+            flex-direction: column; /* Usar flexbox para layout */
+            justify-content: space-between;
         }
 
-        h2, .form-label {
-        color: #b0b0b0; /* Cinza suave */
-        text-align: left; /* Alinha à esquerda */
+        /* Título */
+        .note-card .note-title {
+            font-weight: bold;
+            margin: 0;
+            text-align: start;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-wrap: break-word; /* Garante que o título quebre em palavras longas */
+        }
+
+        /* Descrição */
+        .note-card .note-description {
+            flex-grow: 1;
+            text-align: start;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 7; /* Limita a 7 linhas */
+            -webkit-box-orient: vertical;
+            margin: 0;
+        }
+
+        /* Botões de Ação */
+        .note-actions {
+            display: flex;
+            justify-content: end;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .btn-action {
+            border: none;
+            color: white;
+            font-size: 14px;
+            padding: 5px 8px;
+        }
+        .btn-action:hover {
+            opacity: 0.8;
+        }
+
+        /* Estilização do modal */
+        .modal-dialog {
+            max-width: 60%; /* Aumentado para 1.5x do tamanho padrão */
+        }
+
+        .pagination {
+    background-color: transparent;  /* Fundo transparente */
+    border: none;
+    margin: 0;
 }
 
-        .note-card:focus {
-            background-color: #333 !important; /* Mantém a cor ao focar */
-            color: white;
-            border-color: #6c63ff; /* Realce na borda ao focar */
-            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5); /* Efeito sutil */
-        }
+.pagination .page-item {
+    background-color: transparent;  /* Itens da navegação com fundo transparente */
+    border: none;
+}
+
+.pagination .page-link {
+    color: white;  /* Cor do texto */
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.pagination .page-item.active .page-link {
+    color: #6c63ff; /* Cor do número da página ativa */
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #777; /* Cor para páginas desabilitadas */
+}
+
+.pagination .page-link:hover {
+    color: #6c63ff; /* Cor ao passar o mouse sobre o número da página */
+}
+
+
 
     </style>
 </head>
 <body>
+
     <div class="container py-5">
         @yield('content')
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
