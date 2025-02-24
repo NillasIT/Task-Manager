@@ -21,6 +21,7 @@
                       class="form-control border-0 text-white" 
                       style="background-color: #232323;" rows="10">{{ old( 'description', $task -> description) }}</textarea>
         </div>
+
         <div class="text-center">
             <button type="submit" class="btn text-white" style="background-color: #6c63ff;">Salvar Nota</button>
         </div>

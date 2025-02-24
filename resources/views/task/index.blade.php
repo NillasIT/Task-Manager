@@ -15,7 +15,7 @@
     <!-- Filtro de Categoria -->
     <form action="{{ route('task.index') }}" method="GET" class="mb-4">
         <div class="mb-3">
-            <select name="category_id" class="form-control text-white" style="background-color: #232323;">
+            <select name="category_id" class="form-control text-white" style="background-color: #232323; border: none;">
                 <option value="">Filtrar por Categoria</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
@@ -26,6 +26,8 @@
         </div>
         <button type="submit" class="btn text-white" style="background-color: #6c63ff;">Filtrar</button>
     </form>
+
+
 
     <!-- Cards das Notas -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
