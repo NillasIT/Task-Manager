@@ -27,8 +27,6 @@
         <button type="submit" class="btn text-white" style="background-color: #6c63ff;">Filtrar</button>
     </form>
 
-
-
     <!-- Cards das Notas -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($tasks as $task)
@@ -49,6 +47,25 @@
                         </form>
                         <!-- Botão de Olho para abrir o modal -->
                         <button class="btn btn-sm text-white px-2" style="background: none;" data-bs-toggle="modal" data-bs-target="#viewNote{{ $task->id }}">👁️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="viewNote{{ $task->id }}" tabindex="-1" aria-labelledby="viewNoteLabel{{ $task->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="background-color: #232323; color: white;">
+                        <div class="modal-header" style="border-bottom: none;">
+                            <h5 class="modal-title" id="viewNoteLabel{{ $task->id }}">{{ $task->title }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="padding-top: 0; padding-bottom: 0;">
+                            <h6 class="text-primary">Descrição:</h6>
+                            <p>{{ $task->description }}</p>
+                        </div>
+                        <div class="modal-footer" style="border-top: none;">
+                            <button type="button" class="btn text-white" style="background-color: #6c63ff;" data-bs-dismiss="modal">Fechar</button>
+                        </div>
                     </div>
                 </div>
             </div>
